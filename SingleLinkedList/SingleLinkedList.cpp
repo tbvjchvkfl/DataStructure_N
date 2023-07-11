@@ -102,8 +102,58 @@ void DelelteAll(MonsterList& list)
 	list.pHead = list.pTail = nullptr;
 }
 
+
+
+// 어렵다...ㅠㅠ
+// 순서가 틀리면 안됨. 이거 꼭! 다시 한번 해볼 것!!!
+
 bool DeleteMonster(MonsterList& list, const char* name)
 {
-	return false;
+	Monster* pElement = list.pHead;
+	Monster* pPrevious = nullptr;
+
+	while (pElement != nullptr)
+	{
+		if (strcmp(pElement->name, name) == 0)
+		{
+			break;
+		}
+
+		pPrevious = pElement;
+		pElement = pElement->pNext;
+	}
+
+	if (!pElement)
+	{
+		return false;
+	}
+
+	// 원소가 하나밖에 없을 때 head와 tail을 nullptr로 바꿔주고 지워준 것.
+	if (list.pHead == list.pTail)
+	{
+		list.pHead = list.pTail = nullptr;
+		delete pElement;
+	}
+	else if (pPrevious == nullptr)
+	{
+		list.pHead = pElement->pNext;
+		delete pElement;
+	}
+	else if (pElement == list.pTail)
+	{
+		list.pTail = pPrevious;
+		pPrevious->pNext = nullptr;
+		delete pElement;
+	}
+	else
+	{
+		pPrevious->pNext = pElement->pNext;
+	}
+
+	// 모든 if 문 안에 delete pElement가 들어가있으니
+	// 이렇게 밖으로 빼도 됨.
+	// delete pElement;
+
+	return true;
 }
 
