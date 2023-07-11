@@ -13,7 +13,7 @@ Monster* CreateMonster(MonsterList& list, const char* name, const int HP)
 
 	// list.pTail -> pNext = element;
 	// list.pTail = element;
-	// 위 처럼 짜면 첫번째 원소를 만들 때 
+	// 위 처럼 짜면 첫번째 원소를 만들 때 문제가 생김.
 	if (list.pTail == nullptr)
 	{
 		list.pHead = element;
