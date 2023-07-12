@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Stack.h"
 
 
 // STACK (LIFO) (Last In First Out - 임의의 구조체 안에 먼저 들어간 정보가 가장 마지막에 빠져나옴
@@ -123,6 +124,14 @@ void Pop(Stack& stack)
 	// 좀 더 쉽게 이해하면 topIndex는 임의의 UI에 포커스가 들어와있는 상태라고 이해하면 될 듯.
 	// 그 포커스를 하나씩 감소해주는 것.
 	stack.topIndex--;
+}
+
+void Print(Stack& stack)
+{
+}
+
+void Remove(Stack& stack)
+{
 }
 
 void StackMessage(Stack& stack)
